@@ -2,15 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Game settings</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <title>Mastermind</title>
 </head>
 <body>
-<div class="formfields">
-    <form action="http://localhost:5000/result" method="POST">
-        <p>Dubbele kleuren toegestaan <input type="checkbox" name="doubleColor"/></p>
-        <p>Aantal kleuren <input type="number" name="colorAmount"/></p>
-        <p>Aantal posities <input type="number" name="positionAmount"/></p>
-    </form>
-</div>
+<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row text-white">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                    <h1 class="display-4 py-2 text-truncate">Mastermind</h1>
+                    <div class="px-2">
+                        <form action="http://localhost:5000/play" method="POST">
+                            <div class="form-group">
+                                <label for="doubleColor">Repeating colors?</label>
+                                <input type="checkbox" name="doubleColor" id="doubleColor" class="form-control"/>
+                                <label for="colorAmount">How many colors?</label>
+                                <select name="colorAmount" id="colorAmount" class="form-control">
+                                    {% for i in range(6,11) %}
+                                    <option value="{{i}}">{{i}}</option>
+                                    {%endfor%}
+                                </select>
+                                <label for="positionAmount">How many color-spots?</label>
+                                <select name="positionAmount" id="positionAmount" class="form-control">
+                                    {% for i in range(4,11) %}
+                                    <option value="{{i}}">{{i}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
+                            <input type="submit" value="Play!" class="btn btn-primary"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
+

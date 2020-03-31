@@ -4,11 +4,14 @@ import sqlite3
 class DB(object):
 
     def __init__(self):
+        self.db = None
+        self.cursor = None
+        self.connected = False
         self.open_db()
 
     def open_db(self):
         self.db = sqlite3.connect('../mastermind.db')
-        self.cursor = self.connection.cursor()
+        self.cursor = self.db.cursor()
         self.connected = True
 
     def execute(self, query, bindings):
@@ -30,7 +33,7 @@ class DB(object):
                 return None
             yield row
 
-        self.close()
+            self.close()
 
     def close(self):
         self.db.commit()
