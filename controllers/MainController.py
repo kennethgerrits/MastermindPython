@@ -1,4 +1,4 @@
-from app.models.Player import Player
+from models.Player import Player
 
 
 class MainController(object):
