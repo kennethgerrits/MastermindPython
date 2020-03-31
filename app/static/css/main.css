@@ -4,10 +4,15 @@
     border: 0;
 }
 
-.formfields{
+.formfields {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.bg-black {
+    background: black;
+    color: red;
 }
 

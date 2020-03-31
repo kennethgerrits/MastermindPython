@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-from controllers.MainController import MainController
+from app.controllers.MainController import MainController
 
 app = Flask(__name__)
 
