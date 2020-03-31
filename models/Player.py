@@ -5,3 +5,6 @@ class Player:
 
     def test(self):
         pass
+
+    def __str__(self):
+        return self.username

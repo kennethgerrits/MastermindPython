@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 
+from controllers.MainController import MainController
+
 app = Flask(__name__)
 
 
@@ -12,9 +14,11 @@ def student():
 def result():
     if request.method == 'POST':
         result = request.form
-        print(result)
+        username = result.get('Name')
+        controller.add_new_player(username)
         return render_template("result.html", result=result)
 
 
 if __name__ == '__main__':
+    controller = MainController
     app.run(debug=True)
