@@ -1,5 +1,6 @@
 import sqlite3
 
+
 class DB(object):
 
     def __init__(self):
@@ -9,6 +10,12 @@ class DB(object):
         self.db = sqlite3.connect('../mastermind.db')
         self.cursor = self.connection.cursor()
         self.connected = True
+
+    def init_db(self):
+        self.db = sqlite3.connect('../mastermind.db')
+        with app.open_resource('../pythondb.sql', mode='r') as f:
+            db.cursor().executescript(f.read())
+        db.commit()
 
     def execute(self, query, bindings):
         self.open_db()
@@ -35,8 +42,4 @@ class DB(object):
         self.db.commit()
         self.db.close()
         self.connected = False
-
-
-
-
 
