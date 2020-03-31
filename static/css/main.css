@@ -1,18 +1,28 @@
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
+.body{
+    height: 100%;
+    width: 100%;
 }
 
-.formfields {
+
+
+.aligner{
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    margin-top: 20%;
 }
 
-.bg-black {
-    background: black;
-    color: red;
+.aligner-item{
+    display: block;
+    max-width: 50%;
 }
+
+.inputtext{
+   /* // height: 10vh; */
+   font-size: 80px;
+}
+
+
+
 
