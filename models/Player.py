@@ -2,9 +2,5 @@ class Player:
 
     def __init__(self, username):
         self.username = username
+        print(username + ' has been created')
 
-    def test(self):
-        pass
-
-    def __str__(self):
-        return self.username

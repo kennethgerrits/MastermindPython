@@ -15,10 +15,10 @@ def result():
     if request.method == 'POST':
         result = request.form
         username = result.get('Name')
-        controller.add_new_player(username)
+        controller.add_new_player('test')
         return render_template("result.html", result=result)
 
 
 if __name__ == '__main__':
-    controller = MainController
+    controller = MainController()
     app.run(debug=True)
