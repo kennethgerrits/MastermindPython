@@ -3,8 +3,6 @@
     width: 100%;
 }
 
-
-
 .aligner{
     display: flex;
     align-items: center;
@@ -22,6 +20,38 @@
    /* // height: 10vh; */
    font-size: 80px;
 }
+
+#cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url('/static/images/mastermind_bg.jpg') no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+#cover-caption {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/*Darkened area around the form*/
+form:before {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    z-index: -1;
+    border-radius: 10px;
+}
+
 
 
 
