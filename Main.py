@@ -12,6 +12,7 @@ def student():
 def result():
     if request.method == 'POST':
         result = request.form
+        print(result)
         return render_template("result.html", result=result)
 
 
