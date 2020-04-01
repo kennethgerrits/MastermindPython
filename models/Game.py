@@ -21,8 +21,14 @@ class Game:
         print(self.correctOrder)
         self.insert_to_db()
 
+    def get_available_colors(self):
+        return self.availableColors
+
+    def get_is_configured(self):
+        return self.is_configured
+
     def create_order(self):
-        colors = self.availableColors;
+        colors = self.availableColors.copy()
         for i in range(self.positionAmount):
             picked = random.choice(colors)
             self.correctOrder.append(picked)
@@ -36,5 +42,3 @@ class Game:
             , (self.player.get_username(), self.guessAmount, self.hasCheated, datetime.datetime.now(),))
         db.close()
 
-    def test(self):
-        pass
