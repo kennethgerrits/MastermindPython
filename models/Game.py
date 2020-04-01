@@ -6,16 +6,20 @@ from models.DB import DB
 
 class Game:
 
-    def __init__(self, playerID, double, coloramount, positionamount):
-        self.playerID = playerID
+    def __init__(self, player, double, coloramount, positionamount):
+        self.player = player
+        self.game_id = None
         self.double = bool(double)
         self.guessAmount = 0
         self.hasCheated = False
         self.colorAmount = int(coloramount)
         self.positionAmount = int(positionamount)
         self.correctOrder = []
-        self.availableColors = ['blue', 'green', 'yellow', 'orange', 'red', 'purple', 'pink', 'white', 'black', 'skyblue'][:coloramount]
+        self.availableColors = ['blue', 'green', 'yellow', 'orange', 'red', 'purple', 'pink', 'white', 'black',
+                                'skyblue'][:self.colorAmount]
         self.create_order()
+        print(self.correctOrder)
+        self.insert_to_db()
 
     def create_order(self):
         colors = self.availableColors;
@@ -27,12 +31,10 @@ class Game:
 
     def insert_to_db(self):
         db = DB()
-        db.execute('INSERT INTO Game (Player_id, guess_amount, has_cheated, start_time) VALUES ('
-                   + self.playerID
-                   + ',' + self.guessAmount
-                   + ',' + self.hasCheated
-                   + ',' + datetime.datetime.now() + ')')
-
+        self.game_id = db.execute_and_return(
+            'INSERT INTO Game (username, guess_amount, has_cheated, start_time) VALUES (?,?,?,?)'
+            , (self.player.get_username(), self.guessAmount, self.hasCheated, datetime.datetime.now(),))
+        db.close()
 
     def test(self):
         pass
