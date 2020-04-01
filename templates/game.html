@@ -19,15 +19,13 @@
                         <form action="http://localhost:5000/play" method="POST">
                             <div class="form-group row">
 
-                                {% for i in range(colorAmount) %}
-
+                                {% for i in range(positionAmount) %}
                                 <select name="color[]" id="color[]" class="form-control col-sm smallmargin">
-                                    {% for i in range(6,11) %}
-                                    <option value="{{i}}">{{i}}</option>
+                                    {% for color in availableColors %}
+                                    <option value="{{color}}">{{color}}</option>
                                     {%endfor%}
                                 </select>
                                 {%endfor%}
-
                             </div>
                             <input type="submit" value="Guess!" class="btn btn-primary"/>
                         </form>

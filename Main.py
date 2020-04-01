@@ -32,14 +32,16 @@ def settings():
 def play():
     if request.method == 'POST':
         result = request.form
-        doubleColors = result.get('doubleColor')
-       # colorAmount = result.get('colorAmount')
-        colorAmount = 4
-        positionAmount = result.get('positionAmount')
-        controller.add_settings(doubleColors, colorAmount, positionAmount)
-    return render_template("game.html", colorAmount=colorAmount)
 
+        if not controller.get_is_configured():
+            doubleColors = result.get('doubleColor')
+            colorAmount = int(result.get('colorAmount'))
+            positionAmount = int(result.get('positionAmount'))
+            controller.add_settings(doubleColors, colorAmount, positionAmount)
 
+        print(result.get('color[]'))
+        availableColors = controller.get_available_colors()
+        return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors)
 
 
 if __name__ == '__main__':
