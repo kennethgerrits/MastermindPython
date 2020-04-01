@@ -28,3 +28,6 @@ class MainController(object):
 
     def get_position_amount(self):
         return self.game.get_position_amount()
+
+    def get_history(self):
+        return self.game.get_history()

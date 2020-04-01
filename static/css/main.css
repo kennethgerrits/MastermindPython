@@ -56,6 +56,28 @@ form:before {
     margin: 5px;
 }
 
+/*pins*/
+
+.black{
+  height: 100px;
+  width: 100px;
+  background-color: #000;
+  border-radius: 50%;
+  border-color: #fff;
+  border-style: solid;
+  display: inline-block;
+}
+
+.white{
+  height: 100px;
+  width: 100px;
+  background-color: #fff;
+  border-radius: 50%;
+  border-color: #000;
+  border-style: solid;
+  display: inline-block;
+}
+
 
 
 

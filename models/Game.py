@@ -11,12 +11,14 @@ class Game:
         self.game_id = None
         self.double = bool(double)
         self.guessAmount = 0
+        self.turnsTaken = 0
         self.hasCheated = False
         self.colorAmount = int(coloramount)
         self.positionAmount = int(positionamount)
         self.correctOrder = []
         self.availableColors = ['blue', 'green', 'yellow', 'orange', 'red', 'purple', 'pink', 'white', 'black',
                                 'skyblue'][:self.colorAmount]
+        self.history = {}
         self.create_order()
         print(self.correctOrder)
         self.insert_to_db()
@@ -30,6 +32,9 @@ class Game:
     def get_position_amount(self):
         return self.positionAmount
 
+    def get_history(self):
+        return self.history
+
     def create_order(self):
         colors = self.availableColors.copy()
         for i in range(self.positionAmount):
@@ -40,6 +45,8 @@ class Game:
 
     def guess(self, guessed):
         pinlist = []
+        self.turnsTaken += 1
+        self.history[len(self.history)] = guessed
         for i, color in enumerate(guessed):
             if color in self.correctOrder and self.correctOrder[i] != color:
                 pinlist.append('white')
@@ -51,8 +58,6 @@ class Game:
             return (True, pinlist,)
         else:
             return (False, pinlist,)
-
-
 
     def insert_to_db(self):
         db = DB()
