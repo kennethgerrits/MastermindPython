@@ -27,6 +27,9 @@ class Game:
     def get_is_configured(self):
         return self.is_configured
 
+    def get_position_amount(self):
+        return self.positionAmount
+
     def create_order(self):
         colors = self.availableColors.copy()
         for i in range(self.positionAmount):
@@ -35,10 +38,25 @@ class Game:
             if not self.double:
                 colors.remove(picked)
 
+    def guess(self, guessed):
+        pinlist = []
+        for i, color in enumerate(guessed):
+            if color in self.correctOrder and self.correctOrder[i] != color:
+                pinlist.append('white')
+                continue
+            if color in self.correctOrder and self.correctOrder[i] == color:
+                pinlist.append('black')
+                continue
+        if self.correctOrder == guessed:
+            return (True, pinlist,)
+        else:
+            return (False, pinlist,)
+
+
+
     def insert_to_db(self):
         db = DB()
         self.game_id = db.execute_and_return(
             'INSERT INTO Game (username, guess_amount, has_cheated, start_time) VALUES (?,?,?,?)'
             , (self.player.get_username(), self.guessAmount, self.hasCheated, datetime.datetime.now(),))
         db.close()
-

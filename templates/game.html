@@ -20,7 +20,7 @@
                             <div class="form-group row">
 
                                 {% for i in range(positionAmount) %}
-                                <select name="color[]" id="color[]" class="form-control col-sm smallmargin">
+                                <select name="color{{i}}" id="color[]" class="form-control col-sm smallmargin">
                                     {% for color in availableColors %}
                                     <option value="{{color}}">{{color}}</option>
                                     {%endfor%}

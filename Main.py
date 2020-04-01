@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-
+from pprint import pprint
 from controllers.MainController import MainController
 
 app = Flask(__name__)
@@ -33,7 +33,7 @@ def play():
     if request.method == 'POST':
         result = request.form
 
-            if not controller.get_is_configured():
+        if not controller.get_is_configured():
             doubleColors = bool(result.get('doubleColor'))
             colorAmount = int(result.get('colorAmount'))
             positionAmount = int(result.get('positionAmount'))
@@ -41,8 +41,22 @@ def play():
                 return render_template("gamesettings.html")
             controller.add_settings(doubleColors, colorAmount, positionAmount)
 
-        print(result.get('color[]'))
+
+
         availableColors = controller.get_available_colors()
+        positionAmount = controller.get_position_amount()
+        list = []
+        for i in range(positionAmount):
+            if result.get("color" + str(i)) is not None:
+                list.append(result.get("color" + str(i)))
+        if len(list) > 0:
+            results = controller.play_turn(list)
+            if results[0]:
+                return render_template("endscreen.html")
+            else:
+                print(results[1])
+                return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors, pinlist=results[1])
+
         return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors)
 
 

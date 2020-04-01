@@ -14,10 +14,17 @@ class MainController(object):
 
     def add_settings(self, doublecolors, coloramount, positionamount):
         self.game = Game(self.player, doublecolors, coloramount, positionamount)
-        self.is_configured = True;
+        self.is_configured = True
+
+    def play_turn(self, guessedOrder):
+        return self.game.guess(guessedOrder)
+
 
     def get_available_colors(self):
         return self.game.get_available_colors()
 
     def get_is_configured(self):
         return self.is_configured
+
+    def get_position_amount(self):
+        return self.game.get_position_amount()
