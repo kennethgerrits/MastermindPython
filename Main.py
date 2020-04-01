@@ -32,11 +32,13 @@ def settings():
 def play():
     if request.method == 'POST':
         result = request.form
-        doubleColors = result.get('doubleColor')
-       # colorAmount = result.get('colorAmount')
-        colorAmount = 4
-        positionAmount = result.get('positionAmount')
+        doubleColors = bool(result.get('doubleColor'))
+        colorAmount = int(result.get('colorAmount'))
+        positionAmount = int(result.get('positionAmount'))
+        if colorAmount < positionAmount and not doubleColors:
+            return render_template("gamesettings.html")
         controller.add_settings(doubleColors, colorAmount, positionAmount)
+
     return render_template("game.html", colorAmount=colorAmount)
 
 

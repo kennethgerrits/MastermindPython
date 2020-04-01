@@ -25,7 +25,7 @@ class Game:
         colors = self.availableColors;
         for i in range(self.positionAmount):
             picked = random.choice(colors)
-            self.correctOrder.append(random.choice(picked))
+            self.correctOrder.append(picked)
             if not self.double:
                 colors.remove(picked)
 
