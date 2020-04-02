@@ -18,7 +18,7 @@ class Game:
         self.correctOrder = []
         self.availableColors = ['blue', 'green', 'yellow', 'orange', 'red', 'purple', 'pink', 'white', 'black',
                                 'skyblue'][:self.colorAmount]
-        self.history = {}
+        self.history = [[], []]
         self.create_order()
         print(self.correctOrder)
         self.insert_to_db()
@@ -47,7 +47,6 @@ class Game:
     def guess(self, guessed):
         pinlist = []
         self.turnsTaken += 1
-        self.history[len(self.history)] = guessed
         for i, color in enumerate(guessed):
             if color in self.correctOrder and self.correctOrder[i] != color:
                 pinlist.append('white')
@@ -56,6 +55,8 @@ class Game:
                 pinlist.append('black')
                 continue
         random.shuffle(pinlist)
+        self.history[0].append(guessed)
+        self.history[1].append(pinlist)
         if self.correctOrder == guessed:
             return (True, pinlist,)
         else:

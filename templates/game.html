@@ -19,22 +19,29 @@
                         <form action="http://localhost:5000/play" method="POST">
 
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mx-auto text-center p-4">
-                                {% if pinlist %}
+                                {% if history %}
                                 <div class="row justify-content-center">
-
-                                    {% for guess in userColorInput %}
-                                    <div class="d-flex">
-                                        <span class="{{guess}}"></span>
+                                    <div class="d-flex flex-column">
+                                        {% for guessed in history[0] %}
+                                        <div class="row justify-content-center">
+                                            {% for guess in guessed %}
+                                            <span class="{{guess}}"></span>
+                                            {%endfor%}
+                                        </div>
+                                        {% endfor %}
                                     </div>
-                                    {%endfor%}
                                     <div class="smallRightMargin"></div>
-
-                                    {% for pin in pinlist %}
-                                    <div class="d-flex">
-                                        <span class="{{pin}}"></span>
+                                    <div class="d-flex flex-column">
+                                        {% for pinlist in history[1] %}
+                                        {% if pinlist %}
+                                        <div class="row">
+                                            {% for pin in pinlist %}
+                                                <span class="{{pin}}"></span>
+                                            {%endfor%}
+                                        </div>
+                                        {% endif %}
+                                        {%endfor%}
                                     </div>
-                                    {%endfor%}
-
                                 </div>
                                 {% endif %}
                             </div>
