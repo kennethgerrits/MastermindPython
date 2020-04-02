@@ -1,9 +1,9 @@
-.body{
+.body {
     height: 100%;
     width: 100%;
 }
 
-.aligner{
+.aligner {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -11,14 +11,13 @@
     margin-top: 20%;
 }
 
-.aligner-item{
+.aligner-item {
     display: block;
     max-width: 50%;
 }
 
-.inputtext{
-   /* // height: 10vh; */
-   font-size: 80px;
+.inputtext {
+    font-size: 80px;
 }
 
 #cover {
@@ -47,36 +46,125 @@ form:before {
     position: absolute;
     top: 0;
     width: 100%;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: -1;
     border-radius: 10px;
 }
 
-.smallmargin{
+.smallmargin {
     margin: 5px;
 }
 
 /*pins*/
 
-.black{
-  height: 100px;
-  width: 100px;
-  background-color: #000;
-  border-radius: 50%;
-  border-color: #fff;
-  border-style: solid;
-  display: inline-block;
+.black {
+    height: 30px;
+    width: 30px;
+    background-color: #000;
+    border-radius: 50%;
+    border-color: #fff;
+    border-style: solid;
+    display: inline-block;
 }
 
-.white{
-  height: 100px;
-  width: 100px;
-  background-color: #fff;
+.white {
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
+}
+
+.blue {
+    height: 30px;
+    width: 30px;
+    background-color: blue;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
+}
+
+.green {
+  height: 30px;
+  width: 30px;
+  background-color: green;
   border-radius: 50%;
   border-color: #000;
   border-style: solid;
   display: inline-block;
 }
+
+.yellow {
+  height: 30px;
+  width: 30px;
+  background-color: yellow;
+  border-radius: 50%;
+  border-color: #000;
+  border-style: solid;
+  display: inline-block;
+}
+
+.orange {
+  height: 30px;
+  width: 30px;
+  background-color: orange;
+  border-radius: 50%;
+  border-color: #000;
+  border-style: solid;
+  display: inline-block;
+}
+
+.red {
+  height: 30px;
+  width: 30px;
+  background-color: red;
+  border-radius: 50%;
+  border-color: #000;
+  border-style: solid;
+  display: inline-block;
+}
+
+.purple {
+  height: 30px;
+  width: 30px;
+  background-color: purple;
+  border-radius: 50%;
+  border-color: #000;
+  border-style: solid;
+  display: inline-block;
+}
+
+.pink {
+  height: 30px;
+  width: 30px;
+  background-color: deeppink;
+  border-radius: 50%;
+  border-color: #000;
+  border-style: solid;
+  display: inline-block;
+}
+
+.skyblue {
+  height: 30px;
+  width: 30px;
+  background-color: skyblue;
+  border-radius: 50%;
+  border-color: #000;
+  border-style: solid;
+  display: inline-block;
+}
+
+.smallRightMargin{
+    margin: 0 30px 0 0;
+}
+
+
+
+
+
 
 
 

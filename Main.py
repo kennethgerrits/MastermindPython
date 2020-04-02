@@ -45,19 +45,20 @@ def play():
 
         availableColors = controller.get_available_colors()
         positionAmount = controller.get_position_amount()
-        list = []
+        userColorInput = []
         history = {}
         for i in range(positionAmount):
             if result.get("color" + str(i)) is not None:
-                list.append(result.get("color" + str(i)))
-        if len(list) > 0:
-            results = controller.play_turn(list)
+                userColorInput.append(result.get("color" + str(i)))
+        if len(userColorInput) > 0:
+            results = controller.play_turn(userColorInput)
             history = controller.get_history()
             if results[0]:
                 return render_template("endscreen.html")
             else:
                 print(results[1])
-                return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors, pinlist=results[1], history=history)
+                print(userColorInput)
+                return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors, pinlist=results[1], history=history, userColorInput=userColorInput)
 
         return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors)
 

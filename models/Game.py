@@ -42,6 +42,7 @@ class Game:
             self.correctOrder.append(picked)
             if not self.double:
                 colors.remove(picked)
+        print('correct order: ' + str(self.correctOrder))
 
     def guess(self, guessed):
         pinlist = []
@@ -54,6 +55,7 @@ class Game:
             if color in self.correctOrder and self.correctOrder[i] == color:
                 pinlist.append('black')
                 continue
+        random.shuffle(pinlist)
         if self.correctOrder == guessed:
             return (True, pinlist,)
         else:
