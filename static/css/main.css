@@ -88,86 +88,86 @@ form:before {
 }
 
 .green {
-  height: 30px;
-  width: 30px;
-  background-color: green;
-  border-radius: 50%;
-  border-color: #000;
-  border-style: solid;
-  display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: green;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
 }
 
 .yellow {
-  height: 30px;
-  width: 30px;
-  background-color: yellow;
-  border-radius: 50%;
-  border-color: #000;
-  border-style: solid;
-  display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: yellow;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
 }
 
 .orange {
-  height: 30px;
-  width: 30px;
-  background-color: orange;
-  border-radius: 50%;
-  border-color: #000;
-  border-style: solid;
-  display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: orange;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
 }
 
 .red {
-  height: 30px;
-  width: 30px;
-  background-color: red;
-  border-radius: 50%;
-  border-color: #000;
-  border-style: solid;
-  display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: red;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
 }
 
 .purple {
-  height: 30px;
-  width: 30px;
-  background-color: purple;
-  border-radius: 50%;
-  border-color: #000;
-  border-style: solid;
-  display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: purple;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
 }
 
 .pink {
-  height: 30px;
-  width: 30px;
-  background-color: deeppink;
-  border-radius: 50%;
-  border-color: #000;
-  border-style: solid;
-  display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: deeppink;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
 }
 
 .skyblue {
-  height: 30px;
-  width: 30px;
-  background-color: skyblue;
-  border-radius: 50%;
-  border-color: #000;
-  border-style: solid;
-  display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: skyblue;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
 }
 
 .grey {
-  height: 30px;
-  width: 30px;
-  background-color: grey;
-  border-radius: 50%;
-  border-color: #000;
-  border-style: solid;
-  display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: grey;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
 }
 
-.smallRightMargin{
+.smallRightMargin {
     margin-right: 45px;
 }
 
