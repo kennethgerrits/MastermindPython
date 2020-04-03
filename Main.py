@@ -7,16 +7,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def student():
-    return render_template('student.html')
-
-
-@app.route('/result', methods=['POST', 'GET'])
-def result():
-    if request.method == 'POST':
-        result = request.form
-        username = result.get('Name')
-        controller.add_new_player('test')
-        return render_template("result.html", result=result)
+    controller.resetGame()
+    return render_template('index.html')
 
 
 @app.route('/settings', methods=['POST', 'GET'])
@@ -41,8 +33,6 @@ def play():
                 return render_template("gamesettings.html")
             controller.add_settings(doubleColors, colorAmount, positionAmount)
 
-
-
         availableColors = controller.get_available_colors()
         positionAmount = controller.get_position_amount()
         userColorInput = []
@@ -54,11 +44,14 @@ def play():
             results = controller.play_turn(userColorInput)
             history = controller.get_history()
             if results[0]:
-                return render_template("endscreen.html")
+                player = controller.get_player()
+                turnsTaken = controller.get_turns_taken()
+                return render_template("endscreen.html", player=player, turnsTaken=turnsTaken)
             else:
                 print(results[1])
                 print(userColorInput)
-                return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors, pinlist=results[1], history=history, userColorInput=userColorInput)
+                return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors,
+                                       pinlist=results[1], history=history, userColorInput=userColorInput)
 
         return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors)
 

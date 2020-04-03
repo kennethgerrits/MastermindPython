@@ -157,6 +157,16 @@ form:before {
   display: inline-block;
 }
 
+.grey {
+  height: 30px;
+  width: 30px;
+  background-color: grey;
+  border-radius: 50%;
+  border-color: #000;
+  border-style: solid;
+  display: inline-block;
+}
+
 .smallRightMargin{
     margin-right: 45px;
 }
