@@ -34,13 +34,13 @@ class MainController(object):
 
     def get_total_turn_amount_all(self):
         db = DB()
-        rows = db.query('SELECT distinct(username), count(username) FROM Game group by username')
+        rows = db.query('SELECT distinct(username), count(username)FROM Game where guess_amount != 0 group by username order by guess_amount')
         db.close()
         return rows
 
     def get_details_of_player(self, username):
         db = DB()
-        rows = db.query('SELECT username, start_time, guess_amount from Game where username = ?', (username,))
+        rows = db.query('SELECT username, start_time, guess_amount from Game where username = ? and guess_amount != 0', (username,))
         db.close()
         return rows
 
