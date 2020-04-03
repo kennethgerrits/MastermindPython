@@ -20,7 +20,6 @@ class MainController(object):
     def play_turn(self, guessedOrder):
         return self.game.guess(guessedOrder)
 
-
     def get_available_colors(self):
         return self.game.get_available_colors()
 
@@ -38,9 +37,12 @@ class MainController(object):
         rows = db.query('SELECT distinct(username), count(username) FROM Game group by username')
         db.close()
         return rows
+
     def get_details_of_player(self, username):
         db = DB()
         rows = db.query('SELECT username, start_time, guess_amount from Game where username = ?', (username,))
+        db.close()
+        return rows
 
     def resetGame(self):
         self.player = None

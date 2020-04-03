@@ -15,12 +15,10 @@ def statistics():
     rows = controller.get_total_turn_amount_all()
     return render_template('statistics.html', rows=enumerate(rows))
 
-@app.route('/details')
-def details():
-    if request.method == 'POST':
-        result = request.form
-        username = str(result.get('username'))
-        rows=controller.get_details_of_player(username)
+@app.route('/statistics/<username>')
+def details(username):
+        name = str(username)
+        rows = controller.get_details_of_player(name)
         return render_template('detailedstatistics.html', rows=enumerate(rows))
 
 
