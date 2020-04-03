@@ -10,16 +10,18 @@ def index():
     controller.resetGame()
     return render_template('index.html')
 
+
 @app.route('/statistics')
 def statistics():
     rows = controller.get_total_turn_amount_all()
     return render_template('statistics.html', rows=enumerate(rows))
 
+
 @app.route('/statistics/<username>')
 def details(username):
-        name = str(username)
-        rows = controller.get_details_of_player(name)
-        return render_template('detailedstatistics.html', rows=enumerate(rows))
+    name = str(username)
+    rows = controller.get_details_of_player(name)
+    return render_template('detailedstatistics.html', name=name, rows=enumerate(rows))
 
 
 @app.route('/settings', methods=['POST', 'GET'])

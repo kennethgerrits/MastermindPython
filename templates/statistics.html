@@ -10,48 +10,54 @@
 </head>
 <body>
 <section id="cover" class="min-vh-100">
-        <div class="container smallPadding">
-            <div class="row text-white">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mx-auto text-center form p-4 table-dark">
-                    <table class="table text-white">
-                        <tr>
-                            <th>
-                                #
-                            </th>
-                            <th>
-                                Username
-                            </th>
-                            <th>
-                                Total games played
-                            </th>
-                            <th>
-                                Action
-                            </th>
-                        </tr>
-                        {% for i, row in rows%}
-                        <tr class="text-white">
-                            <th>
-                                {{i}}
-                            </th>
-                            <th>
-                                {{row[0]}}
-                            </th>
-                            <th>
-                                {{row[1]}}
-                            </th>
-                            <th>
-                                <a class="text-decoration-none" href="/statistics/{{row[0]}}">
-                                    <button class="btn btn-dark">
-                                        Details
-                                    </button>
-                                </a>
-                            </th>
-                        </tr>
-                        {% endfor %}
+    <div class="container smallPadding">
+        <h1 class="display-4 py-2 text-truncate text-white text-center">Statistical overview</h1>
+        <div class="row text-white">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mx-auto text-center form p-4 table-dark">
+                <table class="table text-white">
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Username
+                        </th>
+                        <th>
+                            Total games played
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                    {% for i, row in rows%}
+                    <tr class="text-white">
+                        <th>
+                            {{i}}
+                        </th>
+                        <th>
+                            {{row[0]}}
+                        </th>
+                        <th>
+                            {{row[1]}}
+                        </th>
+                        <th>
+                            <a class="text-decoration-none" href="/statistics/{{row[0]}}">
+                                <button class="btn btn-dark border">
+                                    Details
+                                </button>
+                            </a>
+                        </th>
+                    </tr>
+                    {% endfor %}
 
-                    </table>
-                </div>
+                </table>
+                <a class="text-decoration-none" href="/">
+                    <button class="btn btn-dark border">
+                        Back to home
+                    </button>
+                </a>
             </div>
+        </div>
     </div>
 </section>
 </body>
