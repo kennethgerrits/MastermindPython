@@ -68,3 +68,8 @@ class Game:
             'INSERT INTO Game (username, guess_amount, has_cheated, start_time) VALUES (?,?,?,?)'
             , (self.player.get_username(), self.guessAmount, self.hasCheated, datetime.datetime.now(),))
         db.close()
+
+    def update_to_db(self):
+        db = DB()
+        db.execute('UPDATE Game SET guess_amount=? WHERE id=?', self.guessAmount, self.game_id)
+        db.close()
