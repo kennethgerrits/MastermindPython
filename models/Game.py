@@ -47,15 +47,28 @@ class Game:
         pinlist = []
         self.turnsTaken += 1
         self.update_to_db()
+        guessed_colors = []
+        covered_indexes = []
         for i, color in enumerate(guessed):
-            if color in self.correctOrder and self.correctOrder[i] != color:
-                pinlist.append('white')
-                continue
             if color in self.correctOrder and self.correctOrder[i] == color:
-                pinlist.append('black')
-                continue
+                if (not self.double and color not in guessed_colors) or self.double:
+                    pinlist.append('black')
+                    covered_indexes.append(i)
+                    if not self.double:
+                        guessed_colors.append(color)
+                    continue
+        for j, color in enumerate(guessed):
+            if color in self.correctOrder and self.correctOrder[j] != color:
+                if (not self.double and color not in guessed_colors) or self.double:
+                    if i not in covered_indexes:
+                        pinlist.append('white')
+                        covered_indexes.append(j)
+                    if not self.double:
+                        guessed_colors.append(color)
+                    continue
+        for c in range(len(self.correctOrder)-len(pinlist)):
             pinlist.append('grey')
-        random.shuffle(pinlist)
+        # random.shuffle(pinlist)
         self.history[0].append(guessed)
         self.history[1].append(pinlist)
         if self.correctOrder == guessed:
@@ -77,3 +90,5 @@ class Game:
         
     def get_turns_taken(self):
         return self.turnsTaken
+
+

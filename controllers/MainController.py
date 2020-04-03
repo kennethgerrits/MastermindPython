@@ -1,3 +1,4 @@
+from models.DB import DB
 from models.Game import Game
 from models.Player import Player
 
@@ -31,6 +32,15 @@ class MainController(object):
 
     def get_history(self):
         return self.game.get_history()
+
+    def get_total_turn_amount_all(self):
+        db = DB()
+        rows = db.query('SELECT distinct(username), count(username) FROM Game group by username')
+        db.close()
+        return rows
+    def get_details_of_player(self, username):
+        db = DB()
+        rows = db.query('SELECT username, start_time, guess_amount from Game where username = ?', (username,))
 
     def resetGame(self):
         self.player = None

@@ -30,13 +30,12 @@ class DB(object):
         else:
             curs.execute(query)
 
-        while True:
-            row = curs.fetchone()
-            if not row:
-                return None
-            yield row
-
-            self.close()
+        # while True:
+        #     row = curs.fetchone()
+        #     if not row:
+        #         return None
+        #     yield row
+        return curs.fetchall()
 
     def close(self):
         self.db.commit()
