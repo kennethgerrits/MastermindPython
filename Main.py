@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-from pprint import pprint
 from controllers.MainController import MainController
 
 app = Flask(__name__)
@@ -51,9 +50,13 @@ def play():
         availableColors = controller.get_available_colors()
         positionAmount = controller.get_position_amount()
         userColorInput = []
+        correctOrder = []
         player = controller.get_player()
         turnsTaken = controller.get_turns_taken()
         history = {}
+        if result.get('cheatcode') == 'sh0wc0de':
+            print('cheatcode activated')
+            correctOrder = controller.get_correct_order()
         if controller.get_turns_taken() > 9:
             return render_template("gameover.html", player=player, turnsTaken=turnsTaken, maxTurnAmount=10)
         for i in range(positionAmount):
@@ -63,13 +66,13 @@ def play():
             results = controller.play_turn(userColorInput)
             history = controller.get_history()
             if results[0]:
-
                 return render_template("endscreen.html", player=player, turnsTaken=turnsTaken)
             else:
                 print(results[1])
                 print(userColorInput)
                 return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors,
-                                       pinlist=results[1], history=history, userColorInput=userColorInput)
+                                       pinlist=results[1], history=history, userColorInput=userColorInput,
+                                       correctOrder=correctOrder)
 
         return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors)
 

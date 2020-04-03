@@ -51,8 +51,31 @@ form:before {
     border-radius: 10px;
 }
 
+.lightdarkbg {
+    content: '';
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+    border-radius: 10px;
+}
+
 .smallmargin {
     margin: 5px;
+}
+
+.smallRightMargin {
+    margin-right: 45px;
+}
+
+.padding45px {
+    padding: 45px;
+}
+
+.margin10px {
+    margin: 10px;
 }
 
 /*pins*/
@@ -166,21 +189,4 @@ form:before {
     border-style: solid;
     display: inline-block;
 }
-
-.smallRightMargin {
-    margin-right: 45px;
-}
-
-.smallPadding{
-    padding: 45px;
-}
-
-
-
-
-
-
-
-
-
 

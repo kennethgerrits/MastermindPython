@@ -19,7 +19,6 @@ class Game:
                                 'skyblue'][:self.colorAmount]
         self.history = [[], []]
         self.create_order()
-        print(self.correctOrder)
         self.insert_to_db()
 
     def get_available_colors(self):
@@ -66,7 +65,7 @@ class Game:
                     if not self.double:
                         guessed_colors.append(color)
                     continue
-        for c in range(len(self.correctOrder)-len(pinlist)):
+        for c in range(len(self.correctOrder) - len(pinlist)):
             pinlist.append('grey')
         # random.shuffle(pinlist)
         self.history[0].append(guessed)
@@ -87,8 +86,9 @@ class Game:
         db = DB()
         db.execute('UPDATE Game SET guess_amount = ? WHERE id = ?', (self.turnsTaken, self.game_id,))
         db.close()
-        
+
     def get_turns_taken(self):
         return self.turnsTaken
 
-
+    def get_correct_order(self):
+        return self.correctOrder
