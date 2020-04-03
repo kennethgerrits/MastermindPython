@@ -12,16 +12,11 @@
 <section id="cover" class="min-vh-100">
     <div id="cover-caption">
         <div class="container">
-
             <h1 class="display-4 py-2 text-truncate text-white text-center">Statistical overview of {{name}}</h1>
-
             <div class="row text-white">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mx-auto text-center form p-4">
                     <table class="table table-dark">
                         <tr>
-                            <th>
-                                #
-                            </th>
                             <th>
                                 Start Time
                             </th>
@@ -31,9 +26,6 @@
                         </tr>
                         {% for i, row in rows%}
                         <tr class="text-white">
-                            <th>
-                                {{i}}
-                            </th>
                             <th>
                                 {{row[1]}}
                             </th>
