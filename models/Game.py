@@ -54,6 +54,7 @@ class Game:
             if color in self.correctOrder and self.correctOrder[i] == color:
                 pinlist.append('black')
                 continue
+            pinlist.append('grey')
         random.shuffle(pinlist)
         self.history[0].append(guessed)
         self.history[1].append(pinlist)
@@ -73,3 +74,6 @@ class Game:
         db = DB()
         db.execute('UPDATE Game SET guess_amount=? WHERE id=?', self.guessAmount, self.game_id)
         db.close()
+        
+    def get_turns_taken(self):
+        return self.turnsTaken

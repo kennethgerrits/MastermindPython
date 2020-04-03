@@ -31,3 +31,14 @@ class MainController(object):
 
     def get_history(self):
         return self.game.get_history()
+
+    def resetGame(self):
+        self.player = None
+        self.game = None
+        self.is_configured = False
+
+    def get_player(self):
+        return self.player
+
+    def get_turns_taken(self):
+        return self.game.get_turns_taken()
