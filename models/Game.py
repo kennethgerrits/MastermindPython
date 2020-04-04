@@ -23,9 +23,6 @@ class Game:
     def get_available_colors(self):
         return self.availableColors
 
-    def get_is_configured(self):
-        return self.is_configured
-
     def get_position_amount(self):
         return self.positionAmount
 
@@ -44,9 +41,11 @@ class Game:
         pinlist = []
         self.turnsTaken += 1
         self.update_to_db()
+        if self.correctOrder == guessed:
+            return (True, pinlist,)
         correctOrder = self.correctOrder.copy()
         notGuessed = guessed.copy()
-        for i in range(len(guessed)-1, -1, -1):
+        for i in range(len(guessed) - 1, -1, -1):
             if guessed[i] in correctOrder and correctOrder[i] == guessed[i]:
                 pinlist.append('black')
                 correctOrder.pop(i)
@@ -56,16 +55,14 @@ class Game:
             if color in correctOrder:
                 correctOrder.remove(color)
                 pinlist.append('white')
-                
+
         for color in correctOrder:
             pinlist.append('grey')
 
         self.history[0].append(guessed)
         self.history[1].append(pinlist)
-        if self.correctOrder == guessed:
-            return (True, pinlist,)
-        else:
-            return (False, pinlist,)
+
+        return (False, pinlist,)
 
     def insert_to_db(self):
         db = DB()
@@ -83,7 +80,6 @@ class Game:
         db = DB()
         db.execute('UPDATE Game SET has_cheated = 1 WHERE id = ?', (self.game_id,))
         db.close()
-
 
     def get_turns_taken(self):
         return self.turnsTaken

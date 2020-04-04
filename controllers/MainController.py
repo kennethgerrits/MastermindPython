@@ -44,8 +44,9 @@ class MainController(object):
 
     def get_details_of_player(self, username):
         db = DB()
-        rows = db.query('SELECT start_time, guess_amount, has_cheated from Game where username = ? and guess_amount != 0',
-                        (username,))
+        rows = db.query(
+            'SELECT start_time, guess_amount, has_cheated from Game where username = ? and guess_amount != 0',
+            (username,))
         db.close()
         return rows
 

@@ -29,12 +29,6 @@ class DB(object):
             curs.execute(query, bindings)
         else:
             curs.execute(query)
-
-        # while True:
-        #     row = curs.fetchone()
-        #     if not row:
-        #         return None
-        #     yield row
         return curs.fetchall()
 
     def close(self):
