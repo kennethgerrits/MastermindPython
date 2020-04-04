@@ -56,10 +56,10 @@ class Game:
             if color in correctOrder:
                 correctOrder.remove(color)
                 pinlist.append('white')
-            else:
-                pinlist.append('grey')
+                
+        for color in correctOrder:
+            pinlist.append('grey')
 
-        # random.shuffle(pinlist)
         self.history[0].append(guessed)
         self.history[1].append(pinlist)
         if self.correctOrder == guessed:
