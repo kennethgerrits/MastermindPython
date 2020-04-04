@@ -1,6 +1,7 @@
 import sqlite3
 import os
 
+
 class DB(object):
 
     def __init__(self):
@@ -11,7 +12,6 @@ class DB(object):
 
     def open_db(self):
         self.db = sqlite3.connect(os.path.abspath('./mastermind.db'))
-        print(self.db)
         self.cursor = self.db.cursor()
         self.connected = True
 
@@ -41,4 +41,3 @@ class DB(object):
         self.db.commit()
         self.db.close()
         self.connected = False
-

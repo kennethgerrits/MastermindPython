@@ -20,6 +20,9 @@ class MainController(object):
     def play_turn(self, guessedOrder):
         return self.game.guess(guessedOrder)
 
+    def set_cheated(self):
+        self.game.update_cheated_to_db()
+
     def get_available_colors(self):
         return self.game.get_available_colors()
 
@@ -41,7 +44,7 @@ class MainController(object):
 
     def get_details_of_player(self, username):
         db = DB()
-        rows = db.query('SELECT username, start_time, guess_amount from Game where username = ? and guess_amount != 0',
+        rows = db.query('SELECT start_time, guess_amount, has_cheated from Game where username = ? and guess_amount != 0',
                         (username,))
         db.close()
         return rows

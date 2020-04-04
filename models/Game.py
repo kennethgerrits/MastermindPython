@@ -11,7 +11,6 @@ class Game:
         self.game_id = None
         self.double = bool(double)
         self.turnsTaken = 0
-        self.hasCheated = False
         self.colorAmount = int(coloramount)
         self.positionAmount = int(positionamount)
         self.correctOrder = []
@@ -40,7 +39,6 @@ class Game:
             self.correctOrder.append(picked)
             if not self.double:
                 colors.remove(picked)
-        print('correct order: ' + str(self.correctOrder))
 
     def guess(self, guessed):
         pinlist = []
@@ -79,13 +77,19 @@ class Game:
         db = DB()
         self.game_id = db.execute_and_return(
             'INSERT INTO Game (username, guess_amount, has_cheated, start_time) VALUES (?,?,?,?)'
-            , (self.player.get_username(), self.turnsTaken, self.hasCheated, datetime.datetime.now(),))
+            , (self.player.get_username(), self.turnsTaken, 0, datetime.datetime.now(),))
         db.close()
 
     def update_to_db(self):
         db = DB()
         db.execute('UPDATE Game SET guess_amount = ? WHERE id = ?', (self.turnsTaken, self.game_id,))
         db.close()
+
+    def update_cheated_to_db(self):
+        db = DB()
+        db.execute('UPDATE Game SET has_cheated = 1 WHERE id = ?', (self.game_id,))
+        db.close()
+
 
     def get_turns_taken(self):
         return self.turnsTaken

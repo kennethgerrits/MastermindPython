@@ -53,9 +53,8 @@ def play():
         correctOrder = []
         player = controller.get_player()
         turnsTaken = controller.get_turns_taken()
-        history = {}
         if result.get('cheatcode') == 'sh0wc0de':
-            print('cheatcode activated')
+            controller.set_cheated()
             correctOrder = controller.get_correct_order()
         if controller.get_turns_taken() > 9:
             return render_template("gameover.html", player=player, turnsTaken=turnsTaken, maxTurnAmount=10)
@@ -68,8 +67,6 @@ def play():
             if results[0]:
                 return render_template("endscreen.html", player=player, turnsTaken=turnsTaken)
             else:
-                print(results[1])
-                print(userColorInput)
                 return render_template("game.html", positionAmount=positionAmount, availableColors=availableColors,
                                        pinlist=results[1], history=history, userColorInput=userColorInput,
                                        correctOrder=correctOrder)

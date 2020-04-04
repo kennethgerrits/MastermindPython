@@ -23,14 +23,24 @@
                             <th>
                                 Turns taken
                             </th>
+                            <th>
+                                Has cheated
+                            </th>
                         </tr>
                         {% for i, row in rows%}
                         <tr class="text-white">
                             <th>
+                                {{row[0][:19]}}
+                            </th>
+                            <th>
                                 {{row[1]}}
                             </th>
                             <th>
-                                {{row[2]}}
+                                {%if row[2] > 0%}
+                                Yes
+                                {%else%}
+                                No
+                                {%endif%}
                             </th>
                         </tr>
                         {% endfor %}

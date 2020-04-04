@@ -16,12 +16,14 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mx-auto text-center form p-4">
                     <h1 class="display-4 py-2 text-truncate">{{player.username}}, we are extremely disappointed</h1>
                     <div class="px-2">
-                        <form action="http://localhost:5000/" method="POST">
-                            <div class="form-group">
-                                <label>You have exceeded the maximum turnamount of {{maxTurnAmount}}, try better next time</label>
-                            </div>
-                            <input type="submit" value="Play again!" class="btn btn-primary"/>
-                        </form>
+                        <div class="form-group">
+                            <label>You have exceeded the maximum turnamount of {{maxTurnAmount}}, try better next time</label>
+                        </div>
+                        <a class="text-decoration-none" href="/">
+                            <button class="btn btn-primary border">
+                                Play again!
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
