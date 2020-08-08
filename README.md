@@ -1,2 +1,2 @@
 # MastermindPython
-Mastermind in flask with Python
+Mastermind in flask with Python (MVC)
